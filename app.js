@@ -7,6 +7,7 @@ const indexRouter = require('./routes/index');
 const tradesRouter = require('./routes/trades');
 
 const app = express();
+const port = process.env.port || 3000;
 
 // view engine setup
 app.set('view engine', 'jade');
@@ -20,4 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/trades', tradesRouter);
 app.use('/', indexRouter);
 
+app.listen(port,()=>{
+    console.log(`Server is listening on port ${port}`)
+})
 module.exports = app;
